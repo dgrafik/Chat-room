@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Sxv-Db-fDF">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="n0v-ea-nyh">
+            <objects>
+                <viewController storyboardIdentifier="LoginVC" id="Sxv-Db-fDF" customClass="LoginViewController" customModule="chaat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="10c-Fa-Jqy"/>
+                        <viewControllerLayoutGuide type="bottom" id="W4m-Hx-ILq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bOD-bH-CCB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfE-8A-r78">
+                                <rect key="frame" x="142" y="383" width="91" height="30"/>
+                                <state key="normal" title="Login Google"/>
+                                <connections>
+                                    <action selector="logGoogleDidTaped:" destination="Sxv-Db-fDF" eventType="touchUpInside" id="g2P-Zv-3jw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIp-p5-zLd">
+                                <rect key="frame" x="149" y="337" width="77" height="30"/>
+                                <state key="normal" title="Login Anon"/>
+                                <connections>
+                                    <action selector="logAnonDidTaped:" destination="Sxv-Db-fDF" eventType="touchUpInside" id="4EK-Ns-3Zn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="logAnon" destination="hIp-p5-zLd" id="l2u-tW-PmQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzc-Un-5M3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151" y="-86"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="P45-U1-paA">
+            <objects>
+                <viewController id="A8g-xs-bC1" customClass="ChatViewController" customModule="chaat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aRs-s3-gaH"/>
+                        <viewControllerLayoutGuide type="bottom" id="lLV-kJ-L9Q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OId-zs-92v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="955-hh-pgn">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="KIe-ZP-y45">
+                            <connections>
+                                <action selector="logOutDidTaped:" destination="A8g-xs-bC1" id="vme-z4-Ssg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="APP-un-ZRD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="719.5" y="-86.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7y7-vK-biU">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationVC" automaticallyAdjustsScrollViewInsets="NO" id="rkb-vC-Fi4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="069-6A-Eku">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="A8g-xs-bC1" kind="relationship" relationship="rootViewController" id="oDE-Ic-uW6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tEF-sK-nhe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="257.5" y="-86.5"/>
+        </scene>
+    </scenes>
+</document>
