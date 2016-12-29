@@ -61,7 +61,7 @@ class ChatViewController: JSQMessagesViewController {
         collectionView.reloadData()
     }
     
-    func observeMessages(){//wyrzucić ciężkie dane poza główny wątek = Photo i Video - Asynchroniczność
+    func observeMessages(){//wyrzucić ciężkie dane poza główny wątek = Video - Asynchroniczność ???
         messageRef.observeEventType(.ChildAdded, withBlock: { snapshot in
             if let dict = snapshot.value as? [String: AnyObject]{
                 let MediaType = dict["MediaType"] as! String
@@ -78,7 +78,7 @@ class ChatViewController: JSQMessagesViewController {
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
                     print(CFAbsoluteTimeGetCurrent() - startTime)
                     
-                case "PHOTO": //OGARNĄĆ JESZCZE SDWebImage do asynchronicznego pobierania zdjęć !!!
+                case "PHOTO": /
                     
                     var photo = JSQPhotoMediaItem(image: nil)
                     let fileUrl = dict["fileUrl"] as! String
@@ -118,6 +118,21 @@ class ChatViewController: JSQMessagesViewController {
                     let video = NSURL(string: fileUrl)
                     let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: videoItem))
+                    
+                    if let cacheVideo = self.videoCache.objectForKey(fileUrl) as? JSQVideoMediaItem{
+                        videoItem = cacheVideo
+                        self.collectionView.reloadData()
+                    
+                    }else{
+                        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0),{
+                            let video = NSURL(string: fileUrl)
+                            dispatch_async(dispatch_get_main_queue(), {
+                                
+                            })
+                        })
+                    
+                    }
+                    
                     
                     if self.senderId == senderId{
                         videoItem.appliesMediaViewMaskAsOutgoing = true
