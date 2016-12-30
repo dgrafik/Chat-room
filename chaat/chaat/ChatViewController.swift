@@ -19,6 +19,7 @@ class ChatViewController: JSQMessagesViewController {
     var messageRef = FIRDatabase.database().reference().child("message")
     var avatarDict = [String: JSQMessagesAvatarImage]()
     let photoCache = NSCache() //czaem wczytuje zły obrazek - do rozwiązania problemu
+    let videoCache = NSCache()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,7 +79,7 @@ class ChatViewController: JSQMessagesViewController {
                     self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, text: text))
                     print(CFAbsoluteTimeGetCurrent() - startTime)
                     
-                case "PHOTO": /
+                case "PHOTO":
                     
                     var photo = JSQPhotoMediaItem(image: nil)
                     let fileUrl = dict["fileUrl"] as! String
@@ -115,9 +116,8 @@ class ChatViewController: JSQMessagesViewController {
                 case "VIDEO":
                     
                     let fileUrl = dict["fileUrl"] as! String
-                    let video = NSURL(string: fileUrl)
-                    let videoItem = JSQVideoMediaItem(fileURL: video, isReadyToPlay: true)
-                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: videoItem))
+                    //let video = NSURL(string: fileUrl)
+                    var videoItem = JSQVideoMediaItem(fileURL: nil, isReadyToPlay: true)
                     
                     if let cacheVideo = self.videoCache.objectForKey(fileUrl) as? JSQVideoMediaItem{
                         videoItem = cacheVideo
@@ -127,13 +127,15 @@ class ChatViewController: JSQMessagesViewController {
                         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0),{
                             let video = NSURL(string: fileUrl)
                             dispatch_async(dispatch_get_main_queue(), {
-                                
+                                videoItem.fileURL = video
+                                self.collectionView.reloadData()
+                                self.videoCache.setObject(videoItem, forKey: fileUrl)
                             })
                         })
                     
                     }
                     
-                    
+                    self.messages.append(JSQMessage(senderId: senderId, displayName: senderName, media: videoItem))
                     if self.senderId == senderId{
                         videoItem.appliesMediaViewMaskAsOutgoing = true
                     }else{
