@@ -13,6 +13,7 @@ import AVKit
 import FirebaseDatabase
 import FirebaseStorage
 import FirebaseAuth
+import GoogleSignIn
 
 class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
@@ -250,6 +251,8 @@ class ChatViewController: JSQMessagesViewController {
         
         do{
             try FIRAuth.auth()?.signOut()
+            GIDSignIn.sharedInstance().signOut()
+            
         } catch let error{
             print(error)
         }

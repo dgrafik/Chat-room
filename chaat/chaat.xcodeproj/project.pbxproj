@@ -17,6 +17,7 @@
 		250229681DE4C27200048654 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250229671DE4C27200048654 /* LoginViewController.swift */; };
 		2502296A1DE4C49400048654 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250229691DE4C49400048654 /* ChatViewController.swift */; };
 		2502296D1DE4C68600048654 /* deadPool.png in Resources */ = {isa = PBXBuildFile; fileRef = 2502296C1DE4C68600048654 /* deadPool.png */; };
+		256F6F731E19A51300FA1192 /* RoomCollectionViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F6F721E19A51300FA1192 /* RoomCollectionViewControler.swift */; };
 		298B1E43D3BE127D5E1176E8 /* Pods_chaat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CB72AB3E598AF30401BB70 /* Pods_chaat.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		250229691DE4C49400048654 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		2502296B1DE4C59700048654 /* chaat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = chaat.entitlements; sourceTree = "<group>"; };
 		2502296C1DE4C68600048654 /* deadPool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deadPool.png; sourceTree = "<group>"; };
+		256F6F721E19A51300FA1192 /* RoomCollectionViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCollectionViewControler.swift; sourceTree = "<group>"; };
 		55DEB25F4F5A881181FB5AD5 /* Pods-chaat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chaat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chaat/Pods-chaat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				250229671DE4C27200048654 /* LoginViewController.swift */,
 				250229691DE4C49400048654 /* ChatViewController.swift */,
 				250229611DE4B75100048654 /* Helper.swift */,
+				256F6F721E19A51300FA1192 /* RoomCollectionViewControler.swift */,
 				2502294C1DE4AF5700048654 /* Main.storyboard */,
 				250229521DE4AF5700048654 /* Assets.xcassets */,
 				250229541DE4AF5700048654 /* LaunchScreen.storyboard */,
@@ -239,6 +242,7 @@
 				250229511DE4AF5700048654 /* chaat.xcdatamodeld in Sources */,
 				250229491DE4AF5700048654 /* AppDelegate.swift in Sources */,
 				2502296A1DE4C49400048654 /* ChatViewController.swift in Sources */,
+				256F6F731E19A51300FA1192 /* RoomCollectionViewControler.swift in Sources */,
 				250229621DE4B75100048654 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
