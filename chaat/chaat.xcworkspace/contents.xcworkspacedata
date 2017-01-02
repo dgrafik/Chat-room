@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CreateRoomViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:chaat.xcodeproj">
    </FileRef>
    <FileRef
