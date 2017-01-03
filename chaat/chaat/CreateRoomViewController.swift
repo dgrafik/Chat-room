@@ -59,7 +59,9 @@ class CreateRoomViewController: UIViewController, UINavigationControllerDelegate
         data = UIImageJPEGRepresentation(chooseImage.image!, 0.1)!
         CreateNewRoom(FIRAuth.auth()!.currentUser!, caption: captionLbl.text!, data: data)
     }
+    
     var fileUrl: String!
+    
     func CreateNewRoom(user: FIRUser, caption: String, data: NSData){
         let filePath = "\(user.uid)/\(Int(NSDate.timeIntervalSinceReferenceDate()))"
         let metaData = FIRStorageMetadata()

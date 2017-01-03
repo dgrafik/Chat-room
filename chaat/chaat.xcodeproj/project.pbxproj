@@ -20,6 +20,8 @@
 		256F6F731E19A51300FA1192 /* RoomCollectionViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F6F721E19A51300FA1192 /* RoomCollectionViewControler.swift */; };
 		256F6F771E1AEC9A00FA1192 /* CreateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F6F761E1AEC9A00FA1192 /* CreateRoomViewController.swift */; };
 		256F6F791E1B067800FA1192 /* RoomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F6F781E1B067800FA1192 /* RoomCollectionViewCell.swift */; };
+		256F6F7B1E1C0F8000FA1192 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F6F7A1E1C0F8000FA1192 /* Room.swift */; };
+		256F6F7D1E1C1F5000FA1192 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F6F7C1E1C1F5000FA1192 /* DataService.swift */; };
 		298B1E43D3BE127D5E1176E8 /* Pods_chaat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CB72AB3E598AF30401BB70 /* Pods_chaat.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,8 @@
 		256F6F721E19A51300FA1192 /* RoomCollectionViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCollectionViewControler.swift; sourceTree = "<group>"; };
 		256F6F761E1AEC9A00FA1192 /* CreateRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomViewController.swift; sourceTree = "<group>"; };
 		256F6F781E1B067800FA1192 /* RoomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomCollectionViewCell.swift; sourceTree = "<group>"; };
+		256F6F7A1E1C0F8000FA1192 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		256F6F7C1E1C1F5000FA1192 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		55DEB25F4F5A881181FB5AD5 /* Pods-chaat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chaat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chaat/Pods-chaat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +96,8 @@
 				250229671DE4C27200048654 /* LoginViewController.swift */,
 				250229691DE4C49400048654 /* ChatViewController.swift */,
 				250229611DE4B75100048654 /* Helper.swift */,
+				256F6F7C1E1C1F5000FA1192 /* DataService.swift */,
+				256F6F7A1E1C0F8000FA1192 /* Room.swift */,
 				256F6F721E19A51300FA1192 /* RoomCollectionViewControler.swift */,
 				256F6F761E1AEC9A00FA1192 /* CreateRoomViewController.swift */,
 				256F6F781E1B067800FA1192 /* RoomCollectionViewCell.swift */,
@@ -249,9 +255,11 @@
 				250229491DE4AF5700048654 /* AppDelegate.swift in Sources */,
 				256F6F791E1B067800FA1192 /* RoomCollectionViewCell.swift in Sources */,
 				256F6F771E1AEC9A00FA1192 /* CreateRoomViewController.swift in Sources */,
+				256F6F7B1E1C0F8000FA1192 /* Room.swift in Sources */,
 				2502296A1DE4C49400048654 /* ChatViewController.swift in Sources */,
 				256F6F731E19A51300FA1192 /* RoomCollectionViewControler.swift in Sources */,
 				250229621DE4B75100048654 /* Helper.swift in Sources */,
+				256F6F7D1E1C1F5000FA1192 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
