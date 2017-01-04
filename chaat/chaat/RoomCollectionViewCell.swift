@@ -11,6 +11,7 @@ import FirebaseStorage
 
 class RoomCollectionViewCell: UICollectionViewCell {
     
+    
     @IBOutlet weak var thmbnPhoto: UIImageView!
     @IBOutlet weak var captionLbl: UILabel!
     

@@ -16,14 +16,16 @@ import FirebaseAuth
 import GoogleSignIn
 
 class ChatViewController: JSQMessagesViewController {
+    var roomId: String!
     var messages = [JSQMessage]()
-    var messageRef = FIRDatabase.database().reference().child("message")
+    var messageRef = FIRDatabase.database().reference().child("messages")
     var avatarDict = [String: JSQMessagesAvatarImage]()
     let photoCache = NSCache() //czaem wczytuje zły obrazek - do rozwiązania problemu
     let videoCache = NSCache()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //print(RoomCollectionViewControler.ROOMID)
+        //print(RoomCollection.ViewController.rooms[indexPath!.item])
         if let currentUser = FIRAuth.auth()?.currentUser {
             self.senderId = currentUser.uid
             
@@ -64,8 +66,9 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func observeMessages(){//wyrzucić ciężkie dane poza główny wątek = Video - Asynchroniczność ???
-        messageRef.observeEventType(.ChildAdded, withBlock: { snapshot in
+        FIRDatabase.database().reference().child("rooms").child(self.roomId).child("messages").observeEventType(.ChildAdded, withBlock: { snapshot in
             if let dict = snapshot.value as? [String: AnyObject]{
+                //let roomId = dict["roomId"] as! String
                 let MediaType = dict["MediaType"] as! String
                 let senderId = dict["senderId"] as! String
                 let senderName = dict["senderName"] as! String
@@ -159,11 +162,14 @@ class ChatViewController: JSQMessagesViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         print("didpress")
         
-        let newMessage = messageRef.childByAutoId()
-        let messageData = ["text": text, "senderId": senderId, "senderName": senderDisplayName, "MediaType": "TEXT"]
-        newMessage.setValue(messageData)
+        //let newMessage = messageRef.childByAutoId()
+        //let messageData = ["text": text, "senderId": senderId, "senderName": senderDisplayName, "MediaType": "TEXT"]
+        //newMessage.setValue(messageData)
+        
+        DataService.dataService.CreateNewMessage(senderId, roomId: roomId, textMessage: text, senderDisplayName: senderDisplayName, mediaType: "TEXT")
         self.finishSendingMessage()
     }
+    
     
     override func didPressAccessoryButton(sender: UIButton!) {
         print("accesrry")
@@ -246,26 +252,6 @@ class ChatViewController: JSQMessagesViewController {
         // Dispose of any resources that can be recreated.
     }
     
-        @IBAction func logOutDidTaped(sender: AnyObject) {
-        print("anything")
-        
-        do{
-            try FIRAuth.auth()?.signOut()
-            GIDSignIn.sharedInstance().signOut()
-            
-        } catch let error{
-            print(error)
-        }
-        
-        //Stwórz główną instancję (main) storyboard
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //Z głównego storyboardu stwórz instantiate View controller
-        let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as! LoginViewController
-        // App Delegate -> get
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        //Ustaw login view controller jako root
-        appDelegate.window?.rootViewController = loginVC
-    }
     
     func sendMedia(picture: UIImage?, video: NSURL?){
         print(picture)
@@ -281,9 +267,11 @@ class ChatViewController: JSQMessagesViewController {
                     return
                 }
                 let fileUrl = metadata!.downloadURLs![0].absoluteString
-                let newMessage = self.messageRef.childByAutoId()
-                let messageData = ["fileUrl": fileUrl, "senderId": self.senderId, "senderName": self.senderDisplayName, "MediaType": "PHOTO"] // można wysłać w końcu zdjęcie, zapsane w storage, fileUrl z z storage
-                newMessage.setValue(messageData)
+                //let newMessage = self.messageRef.childByAutoId()
+                //let messageData = ["fileUrl": fileUrl, "senderId": self.senderId, "senderName": self.senderDisplayName, "MediaType": "PHOTO"] // można wysłać w końcu zdjęcie, zapsane w storage, fileUrl z z storage
+                //newMessage.setValue(messageData)
+                
+                DataService.dataService.CreateNewMessageMultimedia(fileUrl, roomId: self.roomId, senderId: self.senderId, senderName: self.senderDisplayName, mediaType: "PHOTO")
             }
         }else if let video = video {
             let filePath = "\(FIRAuth.auth()!.currentUser!)/\(NSDate.timeIntervalSinceReferenceDate())" //scieżka
@@ -297,9 +285,11 @@ class ChatViewController: JSQMessagesViewController {
                     return
                 }
                 let fileUrl = metadata!.downloadURLs![0].absoluteString
-                let newMessage = self.messageRef.childByAutoId()
-                let messageData = ["fileUrl": fileUrl, "senderId": self.senderId, "senderName": self.senderDisplayName, "MediaType": "VIDEO"]
-                newMessage.setValue(messageData)
+                //let newMessage = self.messageRef.childByAutoId()
+                //let messageData = ["fileUrl": fileUrl, "senderId": self.senderId, "senderName": self.senderDisplayName, "MediaType": "VIDEO"]
+                //newMessage.setValue(messageData)
+                
+                DataService.dataService.CreateNewMessageMultimedia(fileUrl, roomId: self.roomId, senderId: self.senderId, senderName: self.senderDisplayName, mediaType: "VIDEO")
             }
             
         }

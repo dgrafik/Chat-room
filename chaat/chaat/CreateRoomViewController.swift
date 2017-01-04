@@ -13,7 +13,7 @@ import FirebaseStorage
 
 
 class CreateRoomViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
-    
+    var roomId: String!
     var seletedPhoto: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,10 @@ class CreateRoomViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var choosePhoto: UIButton!
     @IBOutlet weak var chooseImage: UIImageView!
     @IBOutlet weak var captionLbl: UITextField!
+    
+    @IBAction func cancelDidTaped(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBAction func selectPhotoDidTaped(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
