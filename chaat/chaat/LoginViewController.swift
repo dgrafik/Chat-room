@@ -17,9 +17,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // Do any additional setup after loading the view.
         //Border colour and width
         
-        logAnon.layer.borderWidth = 1.8
-        logAnon.layer.borderColor = UIColor.whiteColor().CGColor
-        logAnon.layer.cornerRadius = 5
+        //logAnon.layer.borderWidth = 1.8
+        //logAnon.layer.borderColor = UIColor.whiteColor().CGColor
+        //logAnon.layer.cornerRadius = 5
         
         GIDSignIn.sharedInstance().clientID = "581189176802-76f7rjt7vlvs5rvfl20qb7rt6ohv76j9.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -49,6 +49,10 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
 
 
+    //@IBAction func logAnonDidTaped(sender: AnyObject) {
+        //print("ANon")
+        //Helper.helper.logAnonymously()
+    //}
     @IBAction func logAnonDidTaped(sender: AnyObject) {
         print("ANon")
         Helper.helper.logAnonymously()
@@ -58,8 +62,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         GIDSignIn.sharedInstance().signIn()
     }
     
-    @IBOutlet weak var logAnon: UIButton!
+    //@IBOutlet weak var logAnon: UIButton!
     
+    @IBOutlet weak var logAnon: UIButton!
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!){
         
         if error != nil{

@@ -175,6 +175,7 @@ class ChatViewController: JSQMessagesViewController {
         print("accesrry")
         
         let sheet = UIAlertController(title: "Media Messages", message: "Select the media", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
         let cancel = UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel){ (alert: UIAlertAction) in
         }
         
@@ -191,6 +192,14 @@ class ChatViewController: JSQMessagesViewController {
         sheet.addAction(videoLibrary)
         sheet.addAction(cancel)
         self.presentViewController(sheet, animated: true, completion: nil)
+        
+        if let popoverPresentationController = sheet.popoverPresentationController {
+            popoverPresentationController.sourceView = self.view
+            popoverPresentationController.sourceRect = sender.bounds
+            self.presentViewController(sheet, animated: true, completion: nil)
+        }
+
+        
         
     }
     func getMediaFrom(type: CFString){
@@ -258,7 +267,7 @@ class ChatViewController: JSQMessagesViewController {
         if let picture = picture{
             let filePath = "\(FIRAuth.auth()!.currentUser!)/\(NSDate.timeIntervalSinceReferenceDate())" //scieżka
             print(filePath)
-            let data = UIImageJPEGRepresentation(picture, 0.1) //lżejsza wersja z 1 na 0.1
+            let data = UIImageJPEGRepresentation(picture, 0.2) //lżejsza wersja z 1 na 0.1
             let metadata = FIRStorageMetadata() //String!
             metadata.contentType = "image/jpg"
             FIRStorage.storage().reference().child(filePath).putData(data!, metadata: metadata){ (metadata, error) in
@@ -271,7 +280,7 @@ class ChatViewController: JSQMessagesViewController {
                 //let messageData = ["fileUrl": fileUrl, "senderId": self.senderId, "senderName": self.senderDisplayName, "MediaType": "PHOTO"] // można wysłać w końcu zdjęcie, zapsane w storage, fileUrl z z storage
                 //newMessage.setValue(messageData)
                 
-                DataService.dataService.CreateNewMessageMultimedia(fileUrl, roomId: self.roomId, senderId: self.senderId, senderName: self.senderDisplayName, mediaType: "PHOTO")
+                DataService.dataService.CreateNewMessageMultimedia(fileUrl!, roomId: self.roomId, senderId: self.senderId, senderName: self.senderDisplayName, mediaType: "PHOTO")
             }
         }else if let video = video {
             let filePath = "\(FIRAuth.auth()!.currentUser!)/\(NSDate.timeIntervalSinceReferenceDate())" //scieżka
@@ -289,7 +298,7 @@ class ChatViewController: JSQMessagesViewController {
                 //let messageData = ["fileUrl": fileUrl, "senderId": self.senderId, "senderName": self.senderDisplayName, "MediaType": "VIDEO"]
                 //newMessage.setValue(messageData)
                 
-                DataService.dataService.CreateNewMessageMultimedia(fileUrl, roomId: self.roomId, senderId: self.senderId, senderName: self.senderDisplayName, mediaType: "VIDEO")
+                DataService.dataService.CreateNewMessageMultimedia(fileUrl!, roomId: self.roomId, senderId: self.senderId, senderName: self.senderDisplayName, mediaType: "VIDEO")
             }
             
         }

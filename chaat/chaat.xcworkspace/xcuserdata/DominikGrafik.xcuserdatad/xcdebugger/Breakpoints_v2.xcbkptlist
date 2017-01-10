@@ -16,7 +16,7 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chaat/CreateRoomViewController.swift"
-            timestampString = "505179908.16644"
+            timestampString = "505687824.811838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "CreateNewRoom(_:caption:data:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chaat/CreateRoomViewController.swift"
-            timestampString = "505179908.16644"
+            timestampString = "505687824.811838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "CreateNewRoom(_:caption:data:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chaat/RoomCollectionViewControler.swift"
-            timestampString = "505259207.607881"
+            timestampString = "505526652.762411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "collectionView(_:layout:sizeForItemAtIndexPath:)"
-            landmarkType = "5">
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "collectionView(collectionView:layout:sizeForItemAtIndexPath:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -79,14 +79,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
             endingLineNumber = "168"
-            landmarkName = "didPressSendButton(_:withMessageText:senderId:senderDisplayName:date:)"
-            landmarkType = "5">
+            landmarkName = "didPressSendButton(button:withMessageText:senderId:senderDisplayName:date:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chaat/ChatViewController.swift"
@@ -96,7 +96,55 @@
             startingLineNumber = "143"
             endingLineNumber = "143"
             landmarkName = "observeMessages()"
-            landmarkType = "5">
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "chaat/RoomCollectionViewCell.swift"
+            timestampString = "505526154.595329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "configureCell(room:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "chaat.RoomCollectionViewCell.configureCell (chaat.Room) -&gt; ()"
+                  moduleName = "chaat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominikGrafik/ipp/chaat/chaat/RoomCollectionViewCell.swift"
+                  timestampString = "505526158.970749"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "1483">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "chaat.RoomCollectionViewCell.configureCell (chaat.Room) -&gt; ()"
+                  moduleName = "chaat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominikGrafik/ipp/chaat/chaat/RoomCollectionViewCell.swift"
+                  timestampString = "505526158.990152"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "1543">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

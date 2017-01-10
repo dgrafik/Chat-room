@@ -10,7 +10,7 @@ import UIKit
 import FirebaseStorage
 
 class RoomCollectionViewCell: UICollectionViewCell {
-    
+    let photoCache = NSCache()
     
     @IBOutlet weak var thmbnPhoto: UIImageView!
     @IBOutlet weak var captionLbl: UILabel!
@@ -26,10 +26,14 @@ class RoomCollectionViewCell: UICollectionViewCell {
                         print("Error downloading: \(error)")
                         return
                     }
-                    self.thmbnPhoto.image = UIImage(data: data!)
+                    //dispatch_async(dispatch_get_main_queue(), {
+                        self.thmbnPhoto.image = UIImage(data: data!)
+                                            //}
                 })
             }else if let url = NSURL(string: imageUrl), data = NSData(contentsOfURL: url){
                 self.thmbnPhoto.image = UIImage.init(data: data)
+                self.photoCache.setObject(self.thmbnPhoto.image!, forKey: data)
+
             }
         }
         

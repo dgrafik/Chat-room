@@ -70,6 +70,7 @@ class RoomCollectionViewControler: UICollectionViewController, UICollectionViewD
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("roomCell", forIndexPath: indexPath) as! RoomCollectionViewCell
         let room = rooms[indexPath.row]
         cell.configureCell(room)
+        //self.collectionView!.reloadData()
         return cell
         
     }
