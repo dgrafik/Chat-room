@@ -47,8 +47,8 @@ class RoomCollectionViewControler: UICollectionViewController, UICollectionViewD
           //  self.rooms.append(room)
           //  let indexPath = NSIndexPath(forItem: self.rooms.count - 1, inSection: 0)
           //  self.collectionView?.insertItemsAtIndexPaths([indexPath])
-            
-            
+        
+        
             DataService.dataService.ROOM_REF.observeEventType(.ChildAdded, withBlock:
                 {(snapshot) -> Void in
                     let room = Room(key: snapshot.key, snapshot: snapshot.value as! Dictionary<String, AnyObject>)
@@ -87,8 +87,8 @@ class RoomCollectionViewControler: UICollectionViewController, UICollectionViewD
             let room = rooms[indexPath!.item]
             let chatViewController = segue.destinationViewController as! ChatViewController
             chatViewController.roomId = room.id
+            chatViewController.romName = room.caption
     }
 }
-  
     
 }

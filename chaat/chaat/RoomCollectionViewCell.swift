@@ -15,6 +15,8 @@ class RoomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var thmbnPhoto: UIImageView!
     @IBOutlet weak var captionLbl: UILabel!
     
+    //var nameRoom:String = Room.caption
+    
     func configureCell(room: Room)
     {
         self.captionLbl.text = room.caption
@@ -24,6 +26,7 @@ class RoomCollectionViewCell: UICollectionViewCell {
                     (data, error) in
                     if let error = error {
                         print("Error downloading: \(error)")
+                        Helper.helper.switchToNavigationViewController()
                         return
                     }
                     //dispatch_async(dispatch_get_main_queue(), {

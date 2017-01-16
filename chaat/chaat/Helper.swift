@@ -58,4 +58,11 @@ class Helper{
         appDelegate.window?.rootViewController = naviVC
         
     }
+    public func switchToIDLE(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let naviVC = storyboard.instantiateViewControllerWithIdentifier("LoginVC") as! UIViewController
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.window?.rootViewController = naviVC
+        
+    }
 }

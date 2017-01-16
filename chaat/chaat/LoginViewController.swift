@@ -69,9 +69,11 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         
         if error != nil{
             print(error!.localizedDescription)
-        }
+            Helper.helper.switchToIDLE()
+        }else{
         print(user.authentication)
         Helper.helper.loginWithGoogle(user.authentication)
+        }
     }
 
     

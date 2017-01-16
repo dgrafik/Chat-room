@@ -181,7 +181,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdA-Lc-j0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="249.375" y="-76.056338028169009"/>
+            <point key="canvasLocation" x="248.5" y="-77.5"/>
         </scene>
         <!--Create Room View Controller-->
         <scene sceneID="DK0-UR-TQo">

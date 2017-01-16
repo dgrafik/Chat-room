@@ -6,6 +6,7 @@
 //  Copyright © 2016 Dominik Grafik. All rights reserved.
 //
 
+
 import UIKit
 import JSQMessagesViewController
 import MobileCoreServices
@@ -17,6 +18,7 @@ import GoogleSignIn
 
 class ChatViewController: JSQMessagesViewController {
     var roomId: String!
+    var romName: String!
     var messages = [JSQMessage]()
     var messageRef = FIRDatabase.database().reference().child("messages")
     var avatarDict = [String: JSQMessagesAvatarImage]()
@@ -25,14 +27,19 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //print(RoomCollectionViewControler.ROOMID)
+        
+        self.navigationItem.title = self.romName
+        
         //print(RoomCollection.ViewController.rooms[indexPath!.item])
         if let currentUser = FIRAuth.auth()?.currentUser {
             self.senderId = currentUser.uid
             
             if currentUser.anonymous == true{
                 self.senderDisplayName = "Anonymous"
+                self.navigationItem.prompt = "You are looged as Anonymous"
             }else{
                 self.senderDisplayName = "\(currentUser.displayName!)"
+                self.navigationItem.prompt = "You are logged as \(currentUser.displayName!)"
             }
         }
         observeMessages()
@@ -191,15 +198,28 @@ class ChatViewController: JSQMessagesViewController {
         sheet.addAction(photoLibrary)
         sheet.addAction(videoLibrary)
         sheet.addAction(cancel)
-        self.presentViewController(sheet, animated: true, completion: nil)
         
-        if let popoverPresentationController = sheet.popoverPresentationController {
-            popoverPresentationController.sourceView = self.view
-            popoverPresentationController.sourceRect = sender.bounds
+        
+
+        
+//        if let popoverPresentationController = sheet.popoverPresentationController {
+//            popoverPresentationController.sourceView = self.view
+//            popoverPresentationController.sourceRect = sender.bounds
+//            self.presentViewController(sheet, animated: true, completion: nil)
+//        }
+
+        
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone {
+            self.presentViewController(sheet, animated: true, completion: nil)
+        }
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad {
+            let popoverPresentationController = sheet.popoverPresentationController
+            popoverPresentationController!.sourceView = self.view
+            popoverPresentationController!.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds),0,0)
+            popoverPresentationController!.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
             self.presentViewController(sheet, animated: true, completion: nil)
         }
 
-        
         
     }
     func getMediaFrom(type: CFString){

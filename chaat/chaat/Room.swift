@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import FirebaseStorage
+
 class Room{
     var caption: String!
     var thumbnail: String!

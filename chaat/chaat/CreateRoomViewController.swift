@@ -120,10 +120,18 @@ class CreateRoomViewController: UIViewController, UINavigationControllerDelegate
 
     @IBAction func CreateRoom(sender: AnyObject) {
         var data: NSData = NSData()
-        data = UIImageJPEGRepresentation(chooseImage.image!, 0.4)!
-        CreateNewRoom(FIRAuth.auth()!.currentUser!, caption: captionLbl.text!, data: data)
+        var error: NSError?
+        if error != nil{
+             data = UIImageJPEGRepresentation(chooseImage.image!, 0.4)!
+            CreateNewRoom(FIRAuth.auth()!.currentUser!, caption: captionLbl.text!, data: data)
+            
+            Helper.helper.switchToNavigationViewController()
+        }else{
+            Helper.helper.switchToNavigationViewController()
+
+        }
         
-        Helper.helper.switchToNavigationViewController()
+
     }
     
     var fileUrl: String!
@@ -135,12 +143,14 @@ class CreateRoomViewController: UIViewController, UINavigationControllerDelegate
         FIRStorage.storage().reference().child(filePath).putData(data, metadata:metaData){ (metadata, error) in
             if let error = error{
                 print("Error uploading: \(error.description)")
+                Helper.helper.switchToNavigationViewController()
                 return
-            }
+            }else{
             self.fileUrl = metadata!.downloadURLs![0].absoluteString
             if let user = FIRAuth.auth()?.currentUser{
                 let idRoom = FIRDatabase.database().reference().child("rooms").childByAutoId()
                 idRoom.setValue(["caption": caption, "thunbanilUrlFromStorage": FIRStorage.storage().reference().child(metadata!.path!).description, "fileUrl": self.fileUrl])
+                }
             }
         }
     }
